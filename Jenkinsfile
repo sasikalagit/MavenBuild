@@ -20,7 +20,7 @@ node('') {
 	}
 	
 	stage ('Deployment'){
-		ansiblePlaybook become: true, colorized: true, disableHostKeyChecking: true, playbook: 'deploy.yml'
+		deploy adapters: [tomcat9(credentialsId: 'deployer', path: '', url: 'http://ec2-54-236-49-248.compute-1.amazonaws.com:8080/')], contextpath: null, war: 'target/*.war'
 	}
 	
 	stage ('Notification'){
