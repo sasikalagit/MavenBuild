@@ -20,14 +20,14 @@ node('') {
 	}
 	
 	stage ('Deployment'){
-		deploy adapters: [tomcat9(credentialsId: 'deployer', url: 'http://ec2-54-236-49-248.compute-1.amazonaws.com:8080/')], war: 'target/*.war'
+		deploy adapters: [tomcat9(credentialsId: 'Tomcatcreds', path: '',  url: 'http://ec2-54-152-29-157.compute-1.amazonaws.com:8080/')], contextpath: null, war: 'target/*.war'
 	}
 	
 	stage ('Notification'){
 		emailext (
 		      subject: "Job Completed",
 		      body: "Jenkins Pipeline Job for Maven Build got completed !!!",
-		      to: "build-alerts@example.com"
+		      to: "isasalakr@gmail.com"
 		    )
 	}
 }
