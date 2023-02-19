@@ -20,7 +20,7 @@ node('') {
 	}
 	
 	stage ('Deployment'){
-		deploy adapters: [tomcat9(credentialsId: 'deployer', path: '', url: 'http://ec2-54-236-49-248.compute-1.amazonaws.com:8080/')], contextpath: null, war: 'target/*.war'
+		deploy adapters: [tomcat9(credentialsId: 'deployer', path: '', url: 'http://ec2-54-236-49-248.compute-1.amazonaws.com:8080/')], war: 'target/*.war'
 	}
 	
 	stage ('Notification'){
